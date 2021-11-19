@@ -14,8 +14,8 @@ playBtn.addEventListener("click", function() {
 
     play();
 
-
 })
+
 
 
 // funzione che si attiva con il pulsante play
@@ -61,6 +61,19 @@ function play(){
         return bombsArray;
     }
 
+    // salvo l'array in una variabile per vederlo anche fuori dalla funzione
+    const bombe = createBombs();
+    console.log(bombe);
+    
+     // ordino l'array
+    bombe.sort(function(a, b){return a-b});
+    console.log(bombe);
+
+    // creo un array di tentativi
+    const attempsArray = [];
+    const attemps = cellsNumber - bombsNumber;
+
+
 
 
     // funzione per creare un numero random
@@ -74,6 +87,7 @@ function play(){
 
 
 
+
     // funzione per inserire i nodi nel container
     function appendSquare() {
         const container = document.querySelector('.container');
@@ -82,14 +96,32 @@ function play(){
             const nodo = createSquare(i);
 
             nodo.addEventListener("click", function() {
-                this.classList.add('selected');
+
+                if(bombe.includes(i)) {
+                    this.classList.add('bomb');
+                    endGame();
+                } else {
+                    this.classList.add('selected');
+                    attempsArray.push(i);
+                }
+
+                if(attemps === bombsNumber) {
+                    alert('you won!');
+                }
             })
 
             container.appendChild(nodo);
         }
     }
 
+
+
+    // funzione fine gioco
+    function endGame() {
+        alert('you lose! ' + 'score: ' + attempsArray.length)
+    }
     
+
 
     // funzione per creare un nodo
     function createSquare(num) {
@@ -104,5 +136,6 @@ function play(){
         return square;
     }
 
-    
 }
+
+

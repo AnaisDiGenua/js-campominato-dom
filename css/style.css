@@ -5,7 +5,6 @@
 }
 header {
     height: 50px;
-    background-color: lightsalmon; /*debug*/
 }
 .row {
     width: 70%;
@@ -17,16 +16,14 @@ header {
 }
 .container {
     width: 45%;
-    height: 580px; /*debug*/
+    height: 580px;
     margin: 20px auto;
-    background-color: lightgoldenrodyellow; /*debug*/
     display: flex;
     flex-wrap: wrap;
 }
 .square {
-    /* width: calc(100% / 10);
-    height: calc(100% / 10); */
     background-color: #bacdd9;
+    color: white;
     border: 1px solid black; /*debug*/
     display: flex;
     justify-content: center;
@@ -34,5 +31,8 @@ header {
     cursor: pointer;
 }
 .selected {
-    background-color: #fda117;
+    background-color: #162938;
+}
+.bomb {
+    background-color: #ed2c49;
 }
